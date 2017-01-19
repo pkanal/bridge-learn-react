@@ -11,16 +11,28 @@ export default class HousesContainer extends Component {
 
     this.state = {
       houses: [],
+      currentHouse: null,
     };
+
+    this.getHouse = this.getHouse.bind(this);
+  }
+
+  getHouse(house) {
+    this.setState({
+      currentHouse: house,
+    });
   }
 
   componentDidMount() {
-    $.get(`${API_BASE_URL}/houses`).then(response => {
+    $.get(`${API_BASE_URL}/houses?pageSize=30`).then(response => {
       this.setState({ houses: response });
     })
   }
 
   render() {
-    return <Houses houses={this.state.houses} />
+    return <Houses
+            currentHouse={this.state.currentHouse}
+            houses={this.state.houses}
+            selectHouse={this.getHouse} />
   }
 }

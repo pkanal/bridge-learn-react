@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 export default function House(props) {
-  return <div>{props.name}</div>
+  return <div onClick={ props.selectHouse }>{props.name}</div>
 }
 
 House.propTypes = {
