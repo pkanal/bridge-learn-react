@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Route, browserHistory } from 'react-router';
+
+import Home from './containers/home-container';
+import Houses from './containers/houses-container';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Hello World
-      </div>
+      <Router history={browserHistory}>
+        <Route path='/' component={Home}>
+          <Route path='houses' component={Houses} />
+        </Route>
+      </Router>
     );
   }
 }
